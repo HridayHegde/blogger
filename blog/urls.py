@@ -14,11 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path,include
 
 from blogging import views
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', views.HomePage, name="HomePage")
+    path('', views.HomePage, name="HomePage"),
+    re_path(r'^login/$', views.login_user, name='login_user'),
+    path("__reload__/", include("django_browser_reload.urls")),
+    re_path(r'^delete/(?P<id>\d+)/$',views.DeleteBlog, name="delete_blog"),
+    re_path(r'^edit/(?P<id>\d+)/$',views.EditBlog, name="edit_blog"),
+    path('setblogdetails/', views.SetBlogDetails, name="SetBlogDetails"),
+    path('createblog/', views.CreateNewBlog, name="createnewblog"),
+    path('postablog/', views.PostABlog, name="postablog"),
+    path('editcategories/', views.EditCategories, name="editcategories"),
+    re_path(r'^deletecategory/(?P<id>\d+)/$',views.DeleteCategory, name="deletecategory"),
+    re_path(r'^setcategory/(?P<id>\d+)/$',views.SetCategory, name="setcategory"),
+    path('addcategory/', views.CreateCategory, name="addcategory"),
 ]

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'blogging/css/index.css' %}">
+    <title>BlogApp</title>
+</head>
+<body class="main-body">
+    <div class="header">
+        <h2>Blogger</h2>
+    </div>
+      
+    <div class="row card card-create-blog">
+        {% for category in categories %}
+            <form method='POST' action={% url 'setcategory' category.pk %}> {% csrf_token %}   <input type='text' id='category_name' name='category_name' value={{category.category_name}} /> <a href={% url 'deletecategory' category.pk %}>Delete</a>    <button type='submit'>Edit</button> <br><br></form> <br><br>
+        {% endfor %}
+        <form method='POST' action={% url 'addcategory' %}>
+            {% csrf_token %}   
+            <input type='text' id='category_name' name='category_name' value='' />
+               <button type='submit'>Add Category</button> <br><br>
+            </form>
+            <br><br>
+    </div>
+    
+</body>
+</html>

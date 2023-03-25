@@ -1,0 +1,57 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MyDjangoApp</title>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link rel="stylesheet" type="text/css" href="{% static 'blogging/css/index.css' %}">
+</head>
+<body class="override">
+    <div class="header">
+        <h2>Blogger</h2>
+      </div>
+   
+    <div class="card-login">
+        <div class="">
+            <div class="">
+                <form action="{% url 'login_user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="">
+                        <div class="">
+                            <div class="">Login</div><br>
+                            <div class="">
+                                {% if error_message %}
+                                    <p class="">{{ error_message }}</p>
+                                {% endif %}
+                                <div class="">
+                                    <label for="username" class="">Username:</label>
+                                    <div class="">
+                                        <input name="username" value="" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="">
+                                    <label for="password" class="">Password:</label>
+                                    <div class="">
+                                        <input name="password" type="password" class="form-control" />
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="">
+                                    <input name="login" type="submit" value="Login" class="btn btn-success" /> &nbsp;
+                                    or <a href="/register">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+    
+</body>
+</html>

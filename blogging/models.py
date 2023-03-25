@@ -17,6 +17,7 @@ class UserDetails(models.Model):
 class Category(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     is_deleted = models.BooleanField(default=False)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     category_name = models.CharField(max_length=255, help_text='Category name')
 
     def __str__(self):
@@ -34,7 +35,7 @@ class BlogPost(models.Model):
     edited_at = models.DateTimeField(default=timezone.now)
     is_deleted = models.BooleanField(default=False)
     category = models.ManyToManyField(Category, blank=True, help_text="categories")
-    user = models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
+    user = models.ForeignKey(UserDetails,null=True,on_delete=models.SET_NULL)
 
     #Blog data
     title = models.TextField(help_text="Title of the blogpost")

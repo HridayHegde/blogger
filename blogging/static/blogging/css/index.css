@@ -4,16 +4,18 @@
   
   body {
     font-family: Arial;
-    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     background: #f1f1f1;
   }
   
   /* Header/Blog Title */
   .header {
-    padding: 30px;
-    font-size: 40px;
+    padding: 20px;
+    font-size: 20px;
+    color: white;
     text-align: center;
-    background: white;
+    background: #222;
   }
   
   /* Create two unequal columns that floats next to each other */
@@ -44,6 +46,13 @@
     margin-top: 20px;
   }
   
+  .card-login{
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
   /* Clear floats after the columns */
   .row:after {
     content: "";
@@ -65,4 +74,85 @@
       width: 100%;
       padding: 0;
     }
+  }
+
+
+  .blog-item{
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+  .blog-item:hover{
+    background-color: rgb(218, 218, 218);
+  }
+
+  .blog-category{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .blog-category-item{
+    background-color:aquamarine;
+    border-radius: 50px;
+    text-align: center;
+    padding: 10px;
+    margin-right: 10px;
+    
+
+  }
+  .blog-category-item:hover{  
+    text-decoration: underline;
+
+  }
+
+  .blog-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .blog-head-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+
+  }
+
+  .blog-head-button-edit{
+    cursor: pointer;
+    background-color: greenyellow;
+    border-radius: 10px;
+    margin: 5px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .blog-head-button-edit:hover{
+    background-color: green;
+    text-decoration: underline;
+  }
+
+
+  .blog-head-button-delete{
+    cursor: pointer;
+    background-color: red;
+    border-radius: 10px;
+    margin: 5px;
+    text-align: center;
+    padding: 10px;
+   
+  }
+
+  .blog-head-button-delete:hover{
+    background-color: darkred;
+    text-decoration: underline;
+  }
+
+  .card-create-blog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }

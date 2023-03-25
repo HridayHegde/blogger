@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'blogging/css/index.css' %}">
+    <title>BlogApp</title>
+</head>
+<body class="main-body">
+    <div class="header">
+        <h2>Blogger</h2>
+      </div>
+      
+      <div class="row">
+        <div class="card card-create-blog">
+            <form method='POST' action={% url 'createnewblog' %} class="card-create-blog">
+                {% csrf_token %}
+                <input type='hidden' value='' name='blog_id' id='blog_id'/>
+                <label for='title' class=''> Title: </label>
+                <textarea id='title' name='title' type='text' class='' rows='4' cols='50'></textarea>
+                <br>
+                <br>
+                <label for='content'> Content: </label>
+                <textarea id='content' name='content'  rows='4' cols='50' type='textarea'></textarea>
+                <br>
+                <br>
+                <label for='category'>Category</label>
+                <select multiple id='categories' name='categories'>
+                    
+                    {% for category in categories %}
+                    
+                        {% if category.id in selected_categories %}
+                            <option value={{category.id}} selected>{{category.category_name}}</option>
+                        {% else %}
+                            <option value={{category.id}}>{{category.category_name}}</option>
+                        {% endif %}
+
+                    {%  endfor %}
+                </select>
+                <br>
+                <br>
+                <label for='publish'>Publish?</label>
+                <input type='checkbox' id='publish' name='publish'/>
+                <br>
+                <br>
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
+      </div>
+    
+</body>
+</html>
